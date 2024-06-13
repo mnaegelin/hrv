@@ -1,4 +1,8 @@
-from collections import MutableMapping
+# patch to import MutableMapping for python > 3.9
+try: 
+    from collections.abc import MutableMapping
+except ImportError:
+    from collections import MutableMapping
 from unittest import mock
 
 import matplotlib

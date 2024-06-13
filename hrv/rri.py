@@ -15,7 +15,13 @@ Classes
 """
 
 import sys
-from collections import MutableMapping, defaultdict
+from collections import defaultdict
+# patch to import MutableMapping for python > 3.9
+try: 
+    from collections.abc import MutableMapping
+except ImportError:
+    from collections import MutableMapping
+
 
 import matplotlib.pyplot as plt
 import numpy as np

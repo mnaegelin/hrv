@@ -213,7 +213,7 @@ def threshold_filter(rri, threshold="medium", local_median_size=5):
     # Apply filter in the beginning later
     for j in range(local_median_size, n_rri):
         slice_ = slice(j - local_median_size, j)
-        if rri[j] > (np.median(rri[slice_]) + threshold):
+        if abs(rri[j] - np.median(rri[slice_])) > threshold:
             rri_to_remove.append(j)
 
     first_idx = list(range(local_median_size + 1))
